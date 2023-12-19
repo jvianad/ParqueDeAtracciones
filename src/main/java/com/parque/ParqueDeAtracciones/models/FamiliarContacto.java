@@ -1,5 +1,6 @@
 package com.parque.ParqueDeAtracciones.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,19 +9,20 @@ public class FamiliarContacto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private String telefono;
+    private String nombreFamiliar;
+    private String telefonoFamiliar;
 
     @OneToOne(mappedBy = "familiarContacto")
+    @JsonIgnore
     private Cliente cliente;
 
     public FamiliarContacto() {
     }
 
-    public FamiliarContacto(Long id, String nombre, String telefono, Cliente cliente) {
+    public FamiliarContacto(Long id, String nombreFamiliar, String telefonoFamiliar, Cliente cliente) {
         this.id = id;
-        this.nombre = nombre;
-        this.telefono = telefono;
+        this.nombreFamiliar = nombreFamiliar;
+        this.telefonoFamiliar = telefonoFamiliar;
         this.cliente = cliente;
     }
 
@@ -32,20 +34,20 @@ public class FamiliarContacto {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreFamiliar() {
+        return nombreFamiliar;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreFamiliar(String nombreFamiliar) {
+        this.nombreFamiliar = nombreFamiliar;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getTelefonoFamiliar() {
+        return telefonoFamiliar;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefonoFamiliar(String telefonoFamiliar) {
+        this.telefonoFamiliar = telefonoFamiliar;
     }
 
     public Cliente getCliente() {

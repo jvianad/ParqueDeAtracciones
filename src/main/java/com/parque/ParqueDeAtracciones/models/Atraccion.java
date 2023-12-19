@@ -15,6 +15,8 @@ public class Atraccion {
     private String descripcion;
     private String clasificacion;
     private String condicionesUso;
+    private double estaturaRequerida;
+    private boolean disponible;
 
     @ManyToOne
     @JoinColumn(name = "idEmpleado", nullable = false)
@@ -28,13 +30,16 @@ public class Atraccion {
     public Atraccion() {
     }
 
-    public Atraccion(Long id, String nombre, String descripcion, String clasificacion, String condicionesUso, Empleado operadorEncargado) {
+    public Atraccion(Long id, String nombre, String descripcion, String clasificacion, String condicionesUso, double estaturaRequerida, boolean disponible, Empleado operadorEncargado, Tiquete tiquete) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.clasificacion = clasificacion;
         this.condicionesUso = condicionesUso;
+        this.estaturaRequerida = estaturaRequerida;
+        this.disponible = disponible;
         this.operadorEncargado = operadorEncargado;
+        this.tiquete = tiquete;
     }
 
     public Long getId() {
@@ -85,5 +90,27 @@ public class Atraccion {
         this.operadorEncargado = operadorEncargado;
     }
 
+    public double getEstaturaRequerida() {
+        return estaturaRequerida;
+    }
 
+    public void setEstaturaRequerida(double estaturaRequerida) {
+        this.estaturaRequerida = estaturaRequerida;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public Tiquete getTiquete() {
+        return tiquete;
+    }
+
+    public void setTiquete(Tiquete tiquete) {
+        this.tiquete = tiquete;
+    }
 }

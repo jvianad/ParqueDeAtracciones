@@ -3,6 +3,7 @@ package com.parque.ParqueDeAtracciones.models;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -11,6 +12,8 @@ public class Tiquete {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Temporal(TemporalType.DATE)
+    private Date fechaCompra;
     @ManyToOne
     @JoinColumn(name = "idEstacion", nullable = false)
     private Estacion estacion;
@@ -25,10 +28,12 @@ public class Tiquete {
     public Tiquete() {
     }
 
-    public Tiquete(Long id, Estacion estacion, Cliente cliente) {
+    public Tiquete(Long id, Date fechaCompra, Estacion estacion, Cliente cliente, List<Atraccion> atracciones) {
         this.id = id;
+        this.fechaCompra = fechaCompra;
         this.estacion = estacion;
         this.cliente = cliente;
+        this.atracciones = atracciones;
     }
 
     public Long getId() {
@@ -53,5 +58,21 @@ public class Tiquete {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Date getFechaCompra() {
+        return fechaCompra;
+    }
+
+    public void setFechaCompra(Date fechaCompra) {
+        this.fechaCompra = fechaCompra;
+    }
+
+    public List<Atraccion> getAtracciones() {
+        return atracciones;
+    }
+
+    public void setAtracciones(List<Atraccion> atracciones) {
+        this.atracciones = atracciones;
     }
 }

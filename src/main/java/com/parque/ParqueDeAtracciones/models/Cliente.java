@@ -1,5 +1,6 @@
 package com.parque.ParqueDeAtracciones.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ public class Cliente {
     private String nombre;
     private String cedula;
     private String telefono;
+    private String nombreAdultoResponsable;
+    private String telefonoAdultoResponsable;
     private String correoElectronico;
     private double estatura;
     private int edad;
@@ -107,5 +110,21 @@ public class Cliente {
 
     public void setTiquetes(List<Tiquete> tiquetes) {
         this.tiquetes = tiquetes;
+    }
+
+    public String getNombreAdultoResponsable() {
+        return nombreAdultoResponsable;
+    }
+
+    public void setNombreAdultoResponsable(String nombreAdultoResponsable) {
+        this.nombreAdultoResponsable = nombreAdultoResponsable;
+    }
+
+    public String getTelefonoAdultoResponsable() {
+        return telefonoAdultoResponsable;
+    }
+
+    public void setTelefonoAdultoResponsable(String telefonoAdultoResponsable) {
+        this.telefonoAdultoResponsable = telefonoAdultoResponsable;
     }
 }
